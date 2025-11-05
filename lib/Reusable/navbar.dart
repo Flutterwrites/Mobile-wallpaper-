@@ -6,12 +6,31 @@ import 'package:wallpaper_app/screens/homepage.dart';
 
 import 'package:wallpaper_app/utilities.dart';
 
+class FavouritesPage extends StatelessWidget {
+  const FavouritesPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final currentRoute = ModalRoute.of(context)?.settings.name ?? '/home';
+    final screenWidth = MediaQuery.of(context).size.width;
 
     void navigateTo(Widget page, String routeName) {
       if (currentRoute != routeName) {
@@ -37,72 +56,93 @@ class Navbar extends StatelessWidget {
           ),
         ],
       ),
-      height: 98,
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 47),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Image.asset('images/Vector.png', width: 16, height: 16),
-              const SizedBox(width: 8),
-              Text('Wallpaper Studio', style: ktextstyle),
-            ],
-          ),
+      padding: EdgeInsets.symmetric(
+        horizontal: screenWidth * 0.04,
+        vertical: 10,
+      ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isCompact = constraints.maxWidth < 700;
 
-          Row(
-            children: [
-              NavButton(
-                icon: 'icons/home.svg',
-                label: 'Home',
-                isActive: currentRoute == '/home',
-                onTap: () => navigateTo(const Homepage(), '/home'),
-              ),
-              const SizedBox(width: 12),
-              NavButton(
-                icon: 'icons/browse.svg',
-                label: 'Browse',
-                isActive: currentRoute == '/browse',
-                onTap: () => navigateTo(const BrowseGrid(), '/browse'),
-              ),
-              const SizedBox(width: 12),
-              NavButton(
-                icon: 'icons/heart.svg',
-                label: 'Favourites',
-                isActive: currentRoute == '/favourites',
-                onTap: () => navigateTo(const FavouritesPage(), '/favourites'),
-              ),
-              const SizedBox(width: 12),
-              NavButton(
-                icon: 'icons/settings.svg',
-                label: 'Settings',
-                isActive: currentRoute == '/settings',
-                onTap: () => navigateTo(const SettingsPage(), '/settings'),
-              ),
-            ],
-          ),
-        ],
+          return isCompact
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildBrand(),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: _navItems(
+                        currentRoute,
+                        navigateTo,
+                        screenWidth,
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildBrand(),
+                    Row(
+                      children: _navItems(
+                        currentRoute,
+                        navigateTo,
+                        screenWidth,
+                      ),
+                    ),
+                  ],
+                );
+        },
       ),
     );
   }
-}
 
-class FavouritesPage extends StatelessWidget {
-  const FavouritesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+  Widget _buildBrand() {
+    return Row(
+      children: [
+        Image.asset('images/Vector.png', width: 20, height: 20),
+        const SizedBox(width: 8),
+        Text('Wallpaper Studio', style: ktextstyle),
+      ],
+    );
   }
-}
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+  List<Widget> _navItems(
+    String currentRoute,
+    Function navigateTo,
+    double screenWidth,
+  ) {
+    return [
+      NavButton(
+        icon: 'icons/home.svg',
+        label: 'Home',
+        isActive: currentRoute == '/home',
+        onTap: () => navigateTo(const Homepage(), '/home'),
+      ),
+      const SizedBox(width: 12),
+      NavButton(
+        icon: 'icons/browse.svg',
+        label: 'Browse',
+        isActive: currentRoute == '/browse',
+        onTap: () => navigateTo(const BrowseGrid(), '/browse'),
+      ),
+      const SizedBox(width: 12),
+      NavButton(
+        icon: 'icons/heart.svg',
+        label: 'Favourites',
+        isActive: currentRoute == '/favourites',
+        onTap: () => navigateTo(const FavouritesPage(), '/favourites'),
+      ),
+      const SizedBox(width: 12),
+      NavButton(
+        icon: 'icons/settings.svg',
+        label: 'Settings',
+        isActive: currentRoute == '/settings',
+        onTap: () => navigateTo(const SettingsPage(), '/settings'),
+      ),
+    ];
   }
 }
 
@@ -122,23 +162,33 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final textScale = screenWidth < 600 ? 0.8 : 1.0;
+
     return GestureDetector(
       onTap: onTap,
-
       child: Opacity(
         opacity: isActive ? 1 : 0.5,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+          padding: EdgeInsets.symmetric(
+            horizontal: screenWidth < 600 ? 8 : 16,
+            vertical: 10,
+          ),
           decoration: BoxDecoration(
             color: isActive ? const Color(0xFFF5F5F5) : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(width: 1, color: const Color(0xFFF5F5F5)),
           ),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(icon),
-              const SizedBox(width: 10),
-              Text(label, style: ktextstyle),
+              SvgPicture.asset(
+                icon,
+                width: 16 * textScale,
+                height: 16 * textScale,
+              ),
+              const SizedBox(width: 8),
+              Text(label, style: ktextstyle.copyWith(fontSize: 16 * textScale)),
             ],
           ),
         ),
