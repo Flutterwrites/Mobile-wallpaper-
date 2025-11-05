@@ -1,16 +1,46 @@
-# wallpaper_app
+A mobile Wallpaper App
 
-A new Flutter project.
+An application built with flutter according to the provided Figma design.  
+This project implements all mockup screens with pixel-perfect precision and responsive layouts.
 
-## Getting Started
+*Deliverables*
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+| **GitHub Repository** - https://github.com/Flutterwrites/Mobile-wallpaper-
+| **Demo Video (2–4 mins)** | [Google Drive / Loom Link](https://drive.google.com/...) |
+| **Zipped Build Folder (contains .exe/.dmg)** | [Google Drive Link](https://drive.google.com/...) |
+| **Figma Design File** | https://www.figma.com/design/WnHFPfZ7uW2vxy4sHqtb12/MOBILE-WALLPAPER-SELECTOR?node-id=0-1&p=f&t=2uDO3enoMFIThi2n-0
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+>  **Note:** Please download the entire zipped folder and extract it before running.  
+> Do **not** run the `.exe` file directly from inside the ZIP — extract first.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+
+
+
+*(Watch the demo here → [Video Link](https://drive.google.com/...))*
+
+---
+
+## ⚙️ Tech Stack
+
+- **Framework:** Flutter
+- **Language:** Dart
+- **Platform:** Desktop ( macOS)
+- **IDE:** VS Code / Android Studio (any)
+
+- **Other Dependencies:**
+
+  - `google_fonts` – for matching Figma typography
+  - `flutter_svg` – for rendering SVG icons (if used)
+ 
+---
+
+## 🚀 Setup & Installation
+
+### 1. Prerequisites
+- Install [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- Enable desktop support:
+  ```bash
+  flutter config --enable-windows-desktop
