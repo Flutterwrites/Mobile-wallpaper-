@@ -11,7 +11,11 @@ class FavouritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        child: Column(children: [Navbar(currentRoute: '')]),
+      ),
+    );
   }
 }
 
@@ -20,130 +24,133 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        child: Column(children: [Navbar(currentRoute: '')]),
+      ),
+    );
   }
 }
 
-class Navbar extends StatelessWidget {
-  const Navbar({super.key});
+// class Navbar extends StatelessWidget {
+//   const Navbar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final currentRoute = ModalRoute.of(context)?.settings.name ?? '/home';
-    final screenWidth = MediaQuery.of(context).size.width;
+//   @override
+//   Widget build(BuildContext context) {
+//     final currentRoute = ModalRoute.of(context)?.settings.name ?? '/home';
+//     final screenWidth = MediaQuery.of(context).size.width;
 
-    void navigateTo(Widget page, String routeName) {
-      if (currentRoute != routeName) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => page,
-            settings: RouteSettings(name: routeName),
-          ),
-        );
-      }
-    }
+//     void navigateTo(Widget page, String routeName) {
+//       if (currentRoute != routeName) {
+//         Navigator.pushReplacement(
+//           context,
+//           MaterialPageRoute(
+//             builder: (context) => page,
+//             settings: RouteSettings(name: routeName),
+//           ),
+//         );
+//       }
+//     }
 
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x1A000000),
-            offset: Offset(0, 1),
-            blurRadius: 0,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: screenWidth * 0.04,
-        vertical: 10,
-      ),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final isCompact = constraints.maxWidth < 700;
+//     return Container(
+//       decoration: const BoxDecoration(
+//         color: Colors.white,
+//         boxShadow: [
+//           BoxShadow(
+//             color: Color(0x1A000000),
+//             offset: Offset(0, 1),
+//             blurRadius: 0,
+//             spreadRadius: 0,
+//           ),
+//         ],
+//       ),
+//       padding: EdgeInsets.symmetric(
+//         horizontal: screenWidth * 0.04,
+//         vertical: 10,
+//       ),
+//       child: LayoutBuilder(
+//         builder: (context, constraints) {
+//           final isCompact = constraints.maxWidth < 700;
 
-          return isCompact
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildBrand(),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: _navItems(
-                        currentRoute,
-                        navigateTo,
-                        screenWidth,
-                      ),
-                    ),
-                  ],
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildBrand(),
-                    Row(
-                      children: _navItems(
-                        currentRoute,
-                        navigateTo,
-                        screenWidth,
-                      ),
-                    ),
-                  ],
-                );
-        },
-      ),
-    );
-  }
+//           return isCompact
+//               ? Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     _buildBrand(),
+//                     const SizedBox(height: 12),
+//                     Wrap(
+//                       spacing: 8,
+//                       runSpacing: 8,
+//                       children: _navItems(
+//                         currentRoute,
+//                         navigateTo,
+//                         screenWidth,
+//                       ),
+//                     ),
+//                   ],
+//                 )
+//               : Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     _buildBrand(),
+//                     Row(
+//                       children: _navItems(
+//                         currentRoute,
+//                         navigateTo,
+//                         screenWidth,
+//                       ),
+//                     ),
+//                   ],
+//                 );
+//         },
+//       ),
+//     );
+//   }
 
-  Widget _buildBrand() {
-    return Row(
-      children: [
-        Image.asset('images/Vector.png', width: 20, height: 20),
-        const SizedBox(width: 8),
-        Text('Wallpaper Studio', style: ktextstyle),
-      ],
-    );
-  }
+Widget _buildBrand() {
+  return Row(
+    children: [
+      Image.asset('images/Vector.png', width: 20, height: 20),
+      const SizedBox(width: 8),
+      Text('Wallpaper Studio', style: ktextstyle),
+    ],
+  );
+}
 
-  List<Widget> _navItems(
-    String currentRoute,
-    Function navigateTo,
-    double screenWidth,
-  ) {
-    return [
-      NavButton(
-        icon: 'icons/home.svg',
-        label: 'Home',
-        isActive: currentRoute == '/home',
-        onTap: () => navigateTo(const Homepage(), '/home'),
-      ),
-      const SizedBox(width: 12),
-      NavButton(
-        icon: 'icons/browse.svg',
-        label: 'Browse',
-        isActive: currentRoute == '/browse',
-        onTap: () => navigateTo(const BrowseGrid(), '/browse'),
-      ),
-      const SizedBox(width: 12),
-      NavButton(
-        icon: 'icons/heart.svg',
-        label: 'Favourites',
-        isActive: currentRoute == '/favourites',
-        onTap: () => navigateTo(const FavouritesPage(), '/favourites'),
-      ),
-      const SizedBox(width: 12),
-      NavButton(
-        icon: 'icons/settings.svg',
-        label: 'Settings',
-        isActive: currentRoute == '/settings',
-        onTap: () => navigateTo(const SettingsPage(), '/settings'),
-      ),
-    ];
-  }
+List<Widget> _navItems(
+  String currentRoute,
+  Function navigateTo,
+  double screenWidth,
+) {
+  return [
+    NavButton(
+      icon: 'icons/home.svg',
+      label: 'Home',
+      isActive: currentRoute == '/home',
+      onTap: () => navigateTo(const Homepage(), '/home'),
+    ),
+    const SizedBox(width: 12),
+    NavButton(
+      icon: 'icons/browse.svg',
+      label: 'Browse',
+      isActive: currentRoute == '/browse',
+      onTap: () => navigateTo(const BrowseGrid(), '/browse'),
+    ),
+    const SizedBox(width: 12),
+    NavButton(
+      icon: 'icons/heart.svg',
+      label: 'Favourites',
+      isActive: currentRoute == '/favourites',
+      onTap: () => navigateTo(const FavouritesPage(), '/favourites'),
+    ),
+    const SizedBox(width: 12),
+    NavButton(
+      icon: 'icons/settings.svg',
+      label: 'Settings',
+      isActive: currentRoute == '/settings',
+      onTap: () => navigateTo(const SettingsPage(), '/settings'),
+    ),
+  ];
 }
 
 class NavButton extends StatelessWidget {
@@ -192,6 +199,81 @@ class NavButton extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Navbar extends StatelessWidget {
+  final String currentRoute;
+  const Navbar({super.key, required this.currentRoute});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    void navigateTo(Widget page, String routeName) {
+      if (currentRoute != routeName) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => page,
+            settings: RouteSettings(name: routeName),
+          ),
+        );
+      }
+    }
+
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x1A000000),
+            offset: Offset(0, 1),
+            blurRadius: 0,
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: screenWidth * 0.04,
+        vertical: 10,
+      ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isCompact = constraints.maxWidth < 700;
+          return isCompact
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildBrand(),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: _navItems(
+                        currentRoute,
+                        navigateTo,
+                        screenWidth,
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildBrand(),
+                    Row(
+                      children: _navItems(
+                        currentRoute,
+                        navigateTo,
+                        screenWidth,
+                      ),
+                    ),
+                  ],
+                );
+        },
       ),
     );
   }

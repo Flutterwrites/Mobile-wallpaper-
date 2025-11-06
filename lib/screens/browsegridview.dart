@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:wallpaper_app/Reusable/Textfields.dart';
-import 'package:wallpaper_app/Reusable/categorycard.dart';
-import 'package:wallpaper_app/Reusable/categoryrow.dart';
+
+import 'package:wallpaper_app/Reusable/grids.dart';
+import 'package:wallpaper_app/Reusable/list.dart';
 import 'package:wallpaper_app/Reusable/navbar.dart';
 import 'package:wallpaper_app/utilities.dart';
 
@@ -30,7 +32,7 @@ class _BrowseGridState extends State<BrowseGrid> {
         ),
         child: Column(
           children: [
-            const Navbar(),
+            const Navbar(currentRoute: '/browse'),
             LayoutBuilder(
               builder: (context, constraints) {
                 final isNarrow = constraints.maxWidth < 700;
@@ -68,8 +70,8 @@ class _BrowseGridState extends State<BrowseGrid> {
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
                       child: isGridView
-                          ? const UsedGrid(key: ValueKey('grid'))
-                          : const UsedList(key: ValueKey('list')),
+                          ? const GridViews(key: ValueKey('grid'))
+                          : const ListViews(key: ValueKey('list')),
                     ),
                   ],
                 );
@@ -178,133 +180,6 @@ class _ToggleIcon extends StatelessWidget {
           asset,
           color: isActive ? const Color(0xFFEC9E0C) : const Color(0xFFBFBFBF),
         ),
-      ),
-    );
-  }
-}
-
-class UsedList extends StatelessWidget {
-  const UsedList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CategoryRow(
-          myCard: [
-            CategoryCard(
-              mainText: 'Nature',
-              subText: 'Mountains, Forest and Landscapes',
-              lastText: '3 wallpapers',
-              myImage: 'images/image.jpg',
-              myfunction: () {},
-            ),
-            SizedBox(width: 20),
-            CategoryCard(
-              mainText: 'Abstract',
-              subText: 'Modern Geometric and artistic designs',
-              lastText: '4 wallpapers',
-              myImage: 'images/abstract.jpg',
-              myfunction: () {},
-            ),
-            SizedBox(width: 20),
-            CategoryCard(
-              mainText: 'Urban',
-              subText: 'Cities, architecture and street',
-              lastText: '6 wallpapers',
-              myImage: 'images/urban.jpg',
-              myfunction: () {},
-            ),
-          ],
-        ),
-        SizedBox(height: 23),
-        CategoryRow(
-          myCard: [
-            CategoryCard(
-              mainText: 'Space',
-              subText: 'Cosmos, planets, and galaxies',
-              lastText: '3 wallpapers',
-              myImage: 'images/space.jpg',
-              myfunction: () {},
-            ),
-            SizedBox(width: 20),
-            CategoryCard(
-              mainText: 'Minimalist',
-              subText: 'Clean, simple, and elegant',
-              lastText: '6 wallpapers',
-              myImage: 'images/minimalist.jpg',
-              myfunction: () {},
-            ),
-            SizedBox(width: 20),
-            CategoryCard(
-              mainText: 'Animals',
-              subText: 'Wildlife and nature photography',
-              lastText: '4 wallpapers',
-              myImage: 'images/animals.jpg',
-              myfunction: () {},
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class UsedGrid extends StatelessWidget {
-  const UsedGrid({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Column(
-            children: [
-              ReusableContainer(
-                mainText: 'Nature',
-                subText: 'Mountains, Forest and Landscapes',
-                lastText: '3 wallpapers',
-                myImage: 'images/image.jpg',
-              ),
-              SizedBox(height: 20),
-              ReusableContainer(
-                mainText: 'Abstract',
-                subText: 'Modern Geomentric and artistic designs',
-                lastText: '4 wallpapers',
-                myImage: 'images/abstract.jpg',
-              ),
-              SizedBox(height: 20),
-              ReusableContainer(
-                mainText: 'Urban',
-                subText: 'Cities, architecture and street',
-                lastText: '6 wallpapers',
-                myImage: 'images/urban.jpg',
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-
-          ReusableContainer(
-            mainText: 'Space',
-            subText: 'Cosmos, planets, and galaxies',
-            lastText: '3 wallpapers',
-            myImage: 'images/space.jpg',
-          ),
-          SizedBox(height: 20),
-          ReusableContainer(
-            mainText: 'Minimalist',
-            subText: 'Clean, simple, and elegant',
-            lastText: '6 wallpapers',
-            myImage: 'images/minimalist.jpg',
-          ),
-          SizedBox(height: 20),
-          ReusableContainer(
-            mainText: 'Animals',
-            subText: 'Wildlife and nature photography',
-            lastText: '4 wallpapers',
-            myImage: 'images/animals.jpg',
-          ),
-        ],
       ),
     );
   }

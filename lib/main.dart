@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_app/screens/active.dart';
 import 'package:wallpaper_app/screens/browsegridview.dart';
 import 'package:wallpaper_app/screens/homepage.dart';
+import 'package:wallpaper_app/screens/wallpapersetup.dart';
 
 void main() {
   runApp(const WallpaperApp());
@@ -21,6 +22,7 @@ class WallpaperApp extends StatelessWidget {
         '/home': (context) => const Homepage(),
         '/browse': (context) => const BrowseGrid(),
         '/active': (context) => const ActiveWallpaper(),
+        '/wallpaper': (context) => const Wallpaper(),
         //   '/favourites': (context) => const FavouritesPage(),
         //   '/settings': (context) => const SettingsPage(),
       },

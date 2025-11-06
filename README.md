@@ -8,7 +8,7 @@ This project implements all mockup screens with pixel-perfect precision and resp
 
 | **GitHub Repository** - https://github.com/Flutterwrites/Mobile-wallpaper-
 | **Demo Video (2–4 mins)** | [Google Drive / Loom Link](https://drive.google.com/...) |
-| **Zipped Build Folder (contains .exe/.dmg)** | [Google Drive Link](https://drive.google.com/...) |
+| **Zipped Build Folder (contains .exe/.dmg)** | https://drive.google.com/file/d/1j_Z1AdvTyiURjXjg-drs9he7eN4fuAmV/view?usp=sharing
 | **Figma Design File** | https://www.figma.com/design/WnHFPfZ7uW2vxy4sHqtb12/MOBILE-WALLPAPER-SELECTOR?node-id=0-1&p=f&t=2uDO3enoMFIThi2n-0
 
 >  **Note:** Please download the entire zipped folder and extract it before running.  

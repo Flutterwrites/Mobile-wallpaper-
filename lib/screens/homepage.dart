@@ -22,7 +22,7 @@ class Homepage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Navbar(),
+              Navbar(currentRoute: '/home'),
               SizedBox(height: 50),
               Text(
                 'Discover Beautiful Wallpapers',

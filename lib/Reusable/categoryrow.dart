@@ -78,6 +78,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Mountains, Forest and Landscapes',
               lastText: '3 wallpapers',
               myImage: 'images/image.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
             SizedBox(width: 20),
             CategoryCard(
@@ -85,6 +88,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Modern Geomentric and artistic designs',
               lastText: '4 wallpapers',
               myImage: 'images/abstract.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
             SizedBox(width: 20),
             CategoryCard(
@@ -92,6 +98,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Cities, architecture and street',
               lastText: '6 wallpapers',
               myImage: 'images/urban.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
           ],
         ),
@@ -103,6 +112,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Cosmos, planets, and galaxies',
               lastText: '3 wallpapers',
               myImage: 'images/space.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
             SizedBox(width: 20),
             CategoryCard(
@@ -110,6 +122,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Clean, simple, and elegant',
               lastText: '6 wallpapers',
               myImage: 'images/minimalist.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
             SizedBox(width: 20),
             CategoryCard(
@@ -117,6 +132,9 @@ class UsedColumn extends StatelessWidget {
               subText: 'Wildlife and nature photography',
               lastText: '4 wallpapers',
               myImage: 'images/animals.jpg',
+              myfunction: () {
+                Navigator.pushNamed(context, '/active');
+              },
             ),
           ],
         ),

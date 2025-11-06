@@ -8,18 +8,21 @@ class CategoryCard extends StatelessWidget {
     required this.subText,
     required this.lastText,
     required this.myImage,
+    this.myfunction,
   });
   final String mainText;
   final String subText;
   final String lastText;
   final String myImage;
+  final VoidCallback? myfunction;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/active');
-      },
+      onTap: myfunction,
+      // () {
+      //   Navigator.pushNamed(context, '/active');
+      // },
       child: Container(
         width: 435.33,
 

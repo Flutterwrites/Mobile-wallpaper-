@@ -24,7 +24,7 @@ class ActiveWallpaper extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Navbar(),
+              const Navbar(currentRoute: '/home'),
               const SizedBox(height: 52),
               LayoutBuilder(
                 builder: (context, constraints) {
